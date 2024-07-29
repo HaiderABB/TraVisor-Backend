@@ -1,8 +1,8 @@
 const nodemailer = require("nodemailer");
 const resetUrl = 'http://localhost:3000/ResetPassword'
-const transporter = require('../Config/Transporter');
+const transporter = require('../../Config/Transporter');
 const ejs = require('ejs');
-const ResetEmailTemplate = require('../Templates/ResetEmailTemplate')
+const ResetEmailTemplate = require('../../Templates/ResetEmailTemplate')
 
 const sendMail = async (transporter, email, name) => {
   const emailTemplate = ResetEmailTemplate(name)

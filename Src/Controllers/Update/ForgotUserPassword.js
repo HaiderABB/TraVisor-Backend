@@ -1,6 +1,6 @@
 
-const ValidateEmail = require('../../Middlewares/Validation/ValidateEmail');
-const ResetEmail = require('../../Helper/ResetEmail')
+const ValidateEmail = require('../../Helper/Validation/ValidateEmail');
+const ResetEmail = require('../../Helper/Emails/ResetEmail')
 
 async function ForgotPassword(req, res) {
 

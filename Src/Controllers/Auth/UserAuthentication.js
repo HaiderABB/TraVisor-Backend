@@ -1,5 +1,5 @@
-const ValidateEmail = require('../../Middlewares/Validation/ValidateEmail')
-const DecryptPassword = require('../../Middlewares/Encryption/DecryptPassword')
+const ValidateEmail = require('../../Helper/Validation/ValidateEmail')
+const DecryptPassword = require('../../Helper/Encryption/DecryptPassword')
 const SecretKey = require('../../Config/SecretKey');
 const jwt = require('jsonwebtoken');
 

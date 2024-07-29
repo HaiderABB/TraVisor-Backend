@@ -1,4 +1,4 @@
-const EncryptPassword = require('../../Middlewares/Encryption/EncryptPassword');
+const EncryptPassword = require('../../Helper/Encryption/EncryptPassword');
 const UpdatePassword = require('../../Model/DB/Authentication/UpdatePassword');
 
 const UpdateUserPassword = async (req, res) => {
