@@ -4,8 +4,8 @@ const transporter = require('../../Config/Transporter');
 const ejs = require('ejs');
 const ResetEmailTemplate = require('../../Templates/ResetEmailTemplate')
 
-const sendMail = async (transporter, email, name) => {
-  const emailTemplate = ResetEmailTemplate(name)
+const sendMail = async (transporter, email, name, token) => {
+  const emailTemplate = ResetEmailTemplate(name, token)
 
   mailOptions = {
     from: '"TraVisor Support" <travel.travisor@gmail.com>', // sender address
@@ -20,8 +20,8 @@ const sendMail = async (transporter, email, name) => {
   } catch (err) { console.log(err); }
 }
 
-const ResetEmail = (email, name) => {
-  sendMail(transporter, email.toLowerCase(), name)
+const ResetEmail = (email, name, token) => {
+  sendMail(transporter, email.toLowerCase(), name, token)
 }
 
 module.exports = ResetEmail;
