@@ -9,3 +9,4 @@ Src/Config/flight-infoDB.js
 Src/Config/FlightsDBconnection.js
 Src/Config/DBpass.js
 Src/test.js
+.env

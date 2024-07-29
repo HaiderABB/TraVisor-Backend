@@ -1,4 +1,3 @@
-const ForgotPasswordLink = require('../Config/links')
 
 const ResetEmailTemplate = (name, token) =>
   `<table style="max-width: 660px ; border-collapse: collapse ; font-family: Helvetica Neue, Helvetica, Arial, Verdana, sans-serif" >
@@ -19,7 +18,7 @@ const ResetEmailTemplate = (name, token) =>
         <td style="padding: 0% 3%; font-size: 16px;color: #000000; font-family: Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;font-weight: normal;line-height: 1.5;letter-spacing: 0px;padding-bottom: 5% ">
           <p style=" text-align:left"> Dear ${name},</p>
           <p style="text-align: left">You have requested to reset your password. To complete the process, please click on the following link:
-            <a target='_blank' href=${ForgotPasswordLink + token} rel="noopener">
+            <a target='_blank' href=${process.env.FORGOT_PASSWORD_LINK + token} rel="noopener">
 <span style="color: #fa8b02; text-decoration: underline">Reset Password</span>
             </a > <p>If you did not request a password reset, please ignore this email.</p>
           </p >
