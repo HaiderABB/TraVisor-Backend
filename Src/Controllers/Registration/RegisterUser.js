@@ -1,5 +1,5 @@
 const EncryptPassword = require('../../Middlewares/Encryption/EncryptPassword');
-const StoreUserData = require('../../Model/DB/StoreUserData');
+const StoreUserData = require('../../Model/DB/Authentication/StoreUserData');
 const WelcomeEmail = require('../../Helper/WelcomeEmail');
 const ValidateEmail = require('../../Middlewares/Validation/ValidateEmail');
 

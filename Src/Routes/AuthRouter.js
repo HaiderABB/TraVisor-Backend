@@ -1,4 +1,3 @@
-const express = require('express');
 const { Router } = require('express')
 const AuthRouter = new Router();
 const UserAuthentication = require('../Controllers/Auth/UserAuthentication')

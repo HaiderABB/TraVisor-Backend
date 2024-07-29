@@ -1,4 +1,4 @@
-const Flight_Info = require('../Schemas/flight_info')
+const Flight_Info = require('../../Schemas/Flights/flight_info')
 
 async function GetFlightsDB(ReqObj, res) {
 

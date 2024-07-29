@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const GetFlightsDB = require('../Model/DB/GetFlightsQuery');
+const GetFlightsDB = require('../../Model/DB/Flights/GetFlightsQuery');
 
 async function GetTwoWayFlightInfo(req, res) {
 

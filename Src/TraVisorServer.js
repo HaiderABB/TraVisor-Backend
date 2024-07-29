@@ -1,9 +1,8 @@
 const express = require('express');
-const MongoConnection = require('./Config/AuthDBConnection');
-const AuthRouter = require('./Routes/user_auth_routes');
+const MongoConnection = require('./Config/DBConnection');
+const AuthRouter = require('./Routes/AuthRouter');
 const bodyParser = require('body-parser');
-const PORT = require('./Config/port')
-const FlightsRouter = require('./Routes/Flights')
+const FlightsRouter = require('./Routes/FlightsRouter')
 
 // Async server for handling database connections
 const connection = MongoConnection();

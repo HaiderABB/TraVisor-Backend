@@ -14,5 +14,5 @@ const info_schema = {
 };
 
 const flight_info_schema = new mongoose.Schema(info_schema)
-const Flight_Info = mongoose.model('flight_info', flight_info_schema);
+const Flight_Info = mongoose.model('flight_infos', flight_info_schema);
 module.exports = Flight_Info;

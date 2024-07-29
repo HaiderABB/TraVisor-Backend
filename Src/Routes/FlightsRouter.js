@@ -1,7 +1,7 @@
 const express = require('express');
 const FlightsRouter = express.Router();
-const GetFlightInfo = require('../Controllers/GetFlightInfo');
-const GetTwoWayFlightInfo = require('../Controllers/GetTwoWayFlightInfo');
+const GetFlightInfo = require('../Controllers/Flights/GetFlightInfo');
+const GetTwoWayFlightInfo = require('../Controllers/Flights/GetTwoWayFlightInfo');
 
 // Endpoint for fetching One-Way flights 
 FlightsRouter.get('/FlightInfo/OneWay', GetFlightInfo);
