@@ -6,7 +6,7 @@ async function ForgotPassword(req, res) {
 
   const payload = req.body;
 
-  const flag = await ValidateEmail(payload.email);
+  const flag = await ValidateEmail(payload.email.toLowerCase());
 
   if (flag.user.length === 0) {
     return res.json({ message: "Invalid Email", mail: false });

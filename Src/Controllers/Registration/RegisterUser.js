@@ -4,7 +4,9 @@ const WelcomeEmail = require('../../Helper/WelcomeEmail');
 const ValidateEmail = require('../../Middlewares/Validation/ValidateEmail');
 
 const RegisterUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  let { name, email, password } = req.body;
+
+  console.log(name, password);
 
   // Validate name and password
   if (!name || !password) {
@@ -19,8 +21,10 @@ const RegisterUser = async (req, res) => {
       return res.json({ message: 'User Already exists', email: 'Failed', user: false });
     }
 
+    const lowerCaseEmail = email.toLowerCase();
+    email = lowerCaseEmail;
     await StoreUserData({ name, email, password: encryptedPassword });
-    await WelcomeEmail(email, name);
+    await WelcomeEmail(lowerCaseEmail, name);
 
     res.status(200).json({ message: 'User registered Successfully', email: 'Successful', user: true });
   } catch (err) {

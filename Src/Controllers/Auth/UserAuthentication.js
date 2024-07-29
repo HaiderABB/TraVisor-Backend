@@ -7,7 +7,7 @@ async function UserAuthentication(req, res) {
 
   const { email, password } = req.body;
 
-  const emailValidation = await ValidateEmail(email);
+  const emailValidation = await ValidateEmail(email.toLowerCase());
 
   if (emailValidation.value) {
 
