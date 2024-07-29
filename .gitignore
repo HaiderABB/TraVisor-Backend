@@ -1,0 +1,5 @@
+node_modules
+Src/Config/AuthDBConnection.js
+Src/Config/Transporter.js
+Src/Config/AppPass.js
+Src/Config/AppPassword.js
