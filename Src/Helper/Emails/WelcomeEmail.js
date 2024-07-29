@@ -21,7 +21,7 @@ const sendMail = async (transporter, email, name) => {
 }
 
 const WelcomeEmail = (email, name) => {
-  sendMail(transporter, email, name)
+  sendMail(transporter, email.toLowerCase(), name)
 }
 
 module.exports = WelcomeEmail;

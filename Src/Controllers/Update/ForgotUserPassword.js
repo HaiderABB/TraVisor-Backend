@@ -13,7 +13,7 @@ async function ForgotPassword(req, res) {
   }
   else {
     try {
-      await ResetEmail(payload.email, flag.user[0].name);
+      await ResetEmail(payload.email.toLowerCase(), flag.user[0].name);
     } catch (err) {
       console.log(err);
     }

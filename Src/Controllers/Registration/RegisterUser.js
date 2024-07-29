@@ -15,7 +15,7 @@ const RegisterUser = async (req, res) => {
 
   try {
     const encryptedPassword = await EncryptPassword(password);
-    const emailValidation = await ValidateEmail(email);
+    const emailValidation = await ValidateEmail(email.toLowerCase());
 
     if (emailValidation.user.length > 0) {
       return res.json({ message: 'User Already exists', email: 'Failed', user: false });
