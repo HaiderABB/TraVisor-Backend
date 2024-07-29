@@ -3,3 +3,9 @@ Src/Config/AuthDBConnection.js
 Src/Config/Transporter.js
 Src/Config/AppPass.js
 Src/Config/AppPassword.js
+/node_modules
+Src/query.js
+Src/Config/flight-infoDB.js
+Src/Config/FlightsDBconnection.js
+Src/Config/DBpass.js
+Src/test.js

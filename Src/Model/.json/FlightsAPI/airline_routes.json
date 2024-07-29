@@ -1,0 +1,10 @@
+{
+  "departure_city": "New York",
+  "departure_code": "JFK",
+  "arrival_city": "Los Angeles",
+  "arrival_code": "LAX",
+  "airline": {
+    "id": "3bfc5",
+    "name": "American Airlines"
+  }
+}

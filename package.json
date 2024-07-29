@@ -1,13 +1,13 @@
 {
   "name": "express-admin-auth",
   "version": "1.0.0",
+  "description": "API developed using NodeJS and Express as a Backend server to get Flights information",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
@@ -23,5 +23,8 @@
     "nodemailer": "^6.9.14",
     "nodemon": "^3.1.4",
     "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }

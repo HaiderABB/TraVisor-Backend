@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const User_Auth_Model = require('../Schemas/user_auth');
+const User_Auth_Model = require('../../Schemas/Auth/user_auth');
 
 async function StoreUserData(data) {
 
