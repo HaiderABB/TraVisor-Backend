@@ -3,6 +3,7 @@ const MongoConnection = require('./Config/DBConnection');
 const AuthRouter = require('./Routes/AuthRouter');
 const bodyParser = require('body-parser');
 const FlightsRouter = require('./Routes/FlightsRouter')
+require('dotenv').config('../.env');
 
 // Async server for handling database connections
 const connection = MongoConnection();

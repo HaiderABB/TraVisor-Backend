@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const DBpass = require('./DBpass');
 const DBname = 'travel-planner-flights';
-const DBurl = `mongodb+srv://haideramoazzam:${DBpass}@travel-planner.le3q2ar.mongodb.net/${DBname}?retryWrites=true&w=majority&appName=travel-planner`;
+const DBurl = `mongodb+srv://haideramoazzam:${process.env.DB_PASS}@travel-planner.le3q2ar.mongodb.net/${DBname}?retryWrites=true&w=majority&appName=travel-planner`;
 
 const MongoConnection = async () => {
+  console.log(process.env.DB_PASS);
   let flag;
   try {
     await mongoose.connect(DBurl, {
