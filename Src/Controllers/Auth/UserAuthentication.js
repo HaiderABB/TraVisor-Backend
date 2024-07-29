@@ -1,7 +1,6 @@
 const ValidateEmail = require('../../Helper/Validation/ValidateEmail')
 const DecryptPassword = require('../../Helper/Encryption/DecryptPassword')
-const SecretKey = require('../../Config/SecretKey');
-const jwt = require('jsonwebtoken');
+const GenerateWebToken = require('../../Utils/GenerateWebToken');
 
 async function UserAuthentication(req, res) {
 
@@ -12,11 +11,10 @@ async function UserAuthentication(req, res) {
   if (emailValidation.value) {
 
     const flag = await DecryptPassword(password, emailValidation.user[0].password);
-
     const userId = emailValidation.user[0]._id._id.toString();
 
     if (flag) {
-      const token = jwt.sign({ user_id: userId }, SecretKey, { expiresIn: '1h' })
+      const token = GenerateWebToken(userId);
       res.status(200).json({ message: 'Login Successful', Email: true, Password: true, jwt_token: token });
     }
     else {
