@@ -1,6 +1,6 @@
-
 const ValidateEmail = require('../../Helper/Validation/ValidateEmail');
-const ResetEmail = require('../../Helper/Emails/ResetEmail')
+const ResetEmail = require('../../Helper/Emails/ResetEmail');
+const GenerateWebToken = require('../../Utils/GenerateWebToken');
 
 async function ForgotPassword(req, res) {
 
@@ -13,7 +13,8 @@ async function ForgotPassword(req, res) {
   }
   else {
     try {
-      await ResetEmail(payload.email.toLowerCase(), flag.user[0].name);
+      const token = await GenerateWebToken(flag.user[0]._id._id.toString())
+      await ResetEmail(payload.email.toLowerCase(), flag.user[0].name, token);
     } catch (err) {
       console.log(err);
     }
