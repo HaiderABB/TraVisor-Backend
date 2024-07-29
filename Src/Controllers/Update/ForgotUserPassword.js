@@ -9,7 +9,7 @@ async function ForgotPassword(req, res) {
   const flag = await ValidateEmail(payload.email.toLowerCase());
 
   if (flag.user.length === 0) {
-    return res.json({ message: "Invalid Email", mail: false });
+    return res.status(400).json({ message: "Invalid Email", mail: false });
   }
   else {
     try {

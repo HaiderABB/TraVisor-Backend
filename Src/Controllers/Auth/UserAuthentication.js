@@ -20,12 +20,12 @@ async function UserAuthentication(req, res) {
       res.status(200).json({ message: 'Login Successful', Email: true, Password: true, jwt_token: token });
     }
     else {
-      res.json({ message: "Password Invalid", Email: true, Password: false });
+      res.status(400).json({ message: "Password Invalid", Email: true, Password: false });
     }
 
   }
   else if (!emailValidation.value.length) {
-    res.json({ message: "Email Invalid", Email: false, Password: false });
+    res.status(401).json({ message: "Email Invalid", Email: false, Password: false });
   }
 }
 module.exports = UserAuthentication;

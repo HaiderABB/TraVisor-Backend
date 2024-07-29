@@ -6,7 +6,6 @@ const ValidateEmail = require('../../Helper/Validation/ValidateEmail');
 const RegisterUser = async (req, res) => {
   let { name, email, password } = req.body;
 
-  console.log(name, password);
 
   // Validate name and password
   if (!name || !password) {
@@ -18,7 +17,7 @@ const RegisterUser = async (req, res) => {
     const emailValidation = await ValidateEmail(email.toLowerCase());
 
     if (emailValidation.user.length > 0) {
-      return res.json({ message: 'User Already exists', email: 'Failed', user: false });
+      return res.status(400).json({ message: 'User Already exists', email: 'Failed', user: false });
     }
 
     const lowerCaseEmail = email.toLowerCase();
@@ -29,7 +28,7 @@ const RegisterUser = async (req, res) => {
     res.status(200).json({ message: 'User registered Successfully', email: 'Successful', user: true });
   } catch (err) {
     console.log(err);
-    res.json({ message: "Couldn't register User", email: 'Failed', user: false });
+    res.status(401).json({ message: "Couldn't register User", email: 'Failed', user: false });
   }
 
 };
