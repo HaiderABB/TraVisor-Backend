@@ -14,7 +14,7 @@ async function UserAuthentication(req, res) {
     const userId = emailValidation.user[0]._id._id.toString();
 
     if (flag) {
-      const token = GenerateWebToken(userId);
+      const token = await GenerateWebToken(userId);
       res.status(200).json({ message: 'Login Successful', Email: true, Password: true, jwt_token: token });
     }
     else {
