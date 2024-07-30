@@ -30,7 +30,7 @@ if (connection) {
   server.use('/FlightBooking', FlightsRouter);
 
   // Server Listening Port 
-  server.listen(5050, () => { console.log('The Server is listening to the PORT 5050') })
+  server.listen(5000, () => { console.log('The Server is listening to the PORT 5000') })
 
 }
 else {
