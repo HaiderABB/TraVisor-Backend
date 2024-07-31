@@ -4,10 +4,7 @@ const MongoConnection = async () => {
   const DBurl = `mongodb+srv://haideramoazzam:${process.env.DB_PASS}@travel-planner.le3q2ar.mongodb.net/${DBname}?retryWrites=true&w=majority&appName=travel-planner`;
   let flag;
   try {
-    await mongoose.connect(DBurl, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(DBurl);
     const db = mongoose.connection;
     module.exports = db;
     console.log('Database Connection Established');
