@@ -16,12 +16,16 @@ const sendMail = async (transporter, email, name) => {
 
   try {
     await transporter.sendMail(mailOptions)
-    console.log('Mail sent successfully')
-  } catch (err) { console.log(err); }
+    return true;
+  } catch (err) { return false; }
 }
 
-const WelcomeEmail = (email, name) => {
-  sendMail(transporter, email.toLowerCase(), name)
+const WelcomeEmail = async (email, name) => {
+  try {
+    return await sendMail(transporter, email.toLowerCase(), name)
+  } catch (err) {
+    return false;
+  }
 }
 
 module.exports = WelcomeEmail;

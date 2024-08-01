@@ -16,19 +16,34 @@ const RegisterUser = async (req, res) => {
     const encryptedPassword = await EncryptPassword(password);
     const emailValidation = await ValidateEmail(email.toLowerCase());
 
+    // Check whether the user exists
+
     if (emailValidation.user.length > 0) {
-      return res.status(400).json({ message: 'User Already exists', email: 'Failed', user: false });
+      return res.status(400).json({ message: 'User Already exists', email: false, user: false });
     }
 
-    const lowerCaseEmail = email.toLowerCase();
-    email = lowerCaseEmail;
-    await StoreUserData({ name, email, password: encryptedPassword });
-    await WelcomeEmail(lowerCaseEmail, name);
+    // Converting the email entered by the user to lower case for storing the data
+    const lowerCaseEmail = email.toLowerCase(); email = lowerCaseEmail;
+    //Store user data in the DB
+    const DataStored = await StoreUserData({ name, email, password: encryptedPassword });
+    //Checking if the Data is stored in the Database
+    if (DataStored) {
+      const EmailSent = await WelcomeEmail(lowerCaseEmail, name);
+      // Data Stored but Email not sent
+      if (!EmailSent) {
+        res.status(402).json({ message: "User Registered Successfully but couldn't send Email", email: EmailSent, user: true })
+      }
+      // Data Stored and Email Sent
+      res.status(200).json({ message: 'User registered Successfully', email: EmailSent, user: true });
+    }
+    else if (!DataStored) {
+      res.status(403).json({ message: "Couldn't Register User", email: false, user: false })
+    }
 
-    res.status(200).json({ message: 'User registered Successfully', email: 'Successful', user: true });
+
   } catch (err) {
     console.log(err);
-    res.status(401).json({ message: "Couldn't register User", email: 'Failed', user: false });
+    res.status(401).json({ message: "Couldn't register User", email: false, user: false });
   }
 
 };

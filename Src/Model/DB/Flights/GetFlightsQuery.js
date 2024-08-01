@@ -18,7 +18,7 @@ async function GetFlightsDB(ReqObj, res) {
     return FlightsInfo;
   } catch (err) {
     console.log(err);
-    res.status(500).send('Flights not found for given date');
+    res.status(400).send('Flights not found for given date');
   }
 }
 module.exports = GetFlightsDB;
