@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+// Database Name
 const DBname = 'travel-planner-flights';
 const MongoConnection = async () => {
   const DBurl = `mongodb+srv://haideramoazzam:${process.env.DB_PASS}@travel-planner.le3q2ar.mongodb.net/${DBname}?retryWrites=true&w=majority&appName=travel-planner`;
