@@ -14,12 +14,13 @@ const sendMail = async (transporter, email, name, token) => {
 
   try {
     await transporter.sendMail(mailOptions)
-    console.log('Mail sent successfully')
-  } catch (err) { console.log(err); }
+    return true;
+  } catch (err) { return false }
 }
 
 const ResetEmail = (email, name, token) => {
-  sendMail(transporter, email.toLowerCase(), name, token)
+  const mail = sendMail(transporter, email.toLowerCase(), name, token)
+  return mail;
 }
 
 module.exports = ResetEmail;
