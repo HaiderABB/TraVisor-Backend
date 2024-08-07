@@ -14,7 +14,7 @@ async function GetFlightsDB(ReqObj) {
     });
     return FlightsInfo;
   } catch (err) {
-    return null
+    return []
   }
 }
 module.exports = GetFlightsDB;
