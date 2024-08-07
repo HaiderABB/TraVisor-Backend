@@ -1,11 +1,12 @@
 const express = require('express');
 const FlightsRouter = express.Router();
-const GetFlightInfo = require('../Controllers/Flights/GetFlightInfo');
+const GetOneWayFlightInfo = require('../Controllers/Flights/GetOneWayFlightInfo');
 const GetTwoWayFlightInfo = require('../Controllers/Flights/GetTwoWayFlightInfo');
+const AuthenticateJWT = require('../Middlewares/authenticateJWT');
 
 // Endpoint for fetching One-Way flights 
-FlightsRouter.get('/FlightInfo/OneWay', GetFlightInfo);
+FlightsRouter.get('/FlightInfo/OneWay', AuthenticateJWT, GetOneWayFlightInfo);
 // Endpoint for fetching Two-Way flights 
-FlightsRouter.get('/FlightInfo/TwoWay', GetTwoWayFlightInfo)
+FlightsRouter.get('/FlightInfo/TwoWay', AuthenticateJWT, GetTwoWayFlightInfo)
 
 module.exports = FlightsRouter;

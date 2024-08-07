@@ -14,7 +14,7 @@ const AuthenticateJWT = async (req, res, next) => {
       if (User) {
         next();
       }
-    } catch (err) { res.status(404).json({ authenticated: false, token: false, expired: true }) }
+    } catch (err) { res.status(404).json({ authenticated: false, token: true, expired: true }) }
   }
 }
 

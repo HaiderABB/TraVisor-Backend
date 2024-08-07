@@ -18,8 +18,5 @@ AuthRouter.post('/Forgot', ForgotPassword);
 // Update User Password
 AuthRouter.put('/Forgot/Update', UpdateUserPassword)
 
-// Testing JWT authentication
-AuthRouter.post('/Auth/Verify', AuthenticateJWT)
-
 
 module.exports = AuthRouter;
