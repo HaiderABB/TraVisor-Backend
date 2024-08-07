@@ -1,6 +1,6 @@
 const Flight_Info = require('../../Schemas/Flights/flight_info')
 
-async function GetFlightsDB(ReqObj, res) {
+async function GetFlightsDB(ReqObj) {
 
   const DepartureDate = new Date(ReqObj.DepDate);
   const StartOfDay = DepartureDate.setHours(0, 0, 0, 0);
@@ -14,8 +14,7 @@ async function GetFlightsDB(ReqObj, res) {
     });
     return FlightsInfo;
   } catch (err) {
-    console.log(err);
-    res.status(400).send('Flights not found for given date');
+    return null
   }
 }
 module.exports = GetFlightsDB;

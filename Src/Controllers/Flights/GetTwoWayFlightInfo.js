@@ -2,9 +2,6 @@ const mongoose = require('mongoose');
 const GetFlightsDB = require('../../Model/DB/Flights/GetFlightsQuery');
 
 async function GetTwoWayFlightInfo(req, res) {
-
-  let ResJson = [];
-
   try {
 
     let ReqObj = {
@@ -12,26 +9,24 @@ async function GetTwoWayFlightInfo(req, res) {
       ArrivalCity: req.body.ArrivalCity,
       DepDate: req.body.DepDate
     }
-
-    const tempJsonDep = await GetFlightsDB(ReqObj, res);
-
-    ResJson.push(tempJsonDep);
+    const OneWay = await GetFlightsDB(ReqObj, res);
 
     ReqObj = {
-      DepCity: req.query.ArrivalCity,
-      ArrivalCity: req.query.DepCity,
-      DepDate: req.query.ReturnDate
+      DepCity: req.body.ArrivalCity,
+      ArrivalCity: req.body.DepCity,
+      DepDate: req.body.ReturnDate
+    }
+    const Return = await GetFlightsDB(ReqObj, res);
+
+    if (OneWay.length && Return.length) {
+      res.status(200).json({ message: 'Flights Found', flight: true, error: false, OneWay, Return })
+    }
+    else {
+      res.status(400).json({ message: 'Flights not found', flight: false, error: false })
     }
 
-
-    const tempJsonArrival = await GetFlightsDB(ReqObj, res);
-
-    ResJson.push(tempJsonArrival);
-
-    res.json(ResJson);
-
   } catch (err) {
-    console.log(err);
+    res.status(404).json({ message: 'Error Fetching Flights', flight: false, error: true })
   }
 
 
