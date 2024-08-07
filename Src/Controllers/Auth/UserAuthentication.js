@@ -1,12 +1,12 @@
-const ValidateEmail = require('../../Helper/Validation/ValidateEmail')
-const DecryptPassword = require('../../Helper/Encryption/DecryptPassword')
+const DecryptPassword = require('../../Helper/Encryption/DecryptPassword');
+const GetUserDetails = require('../../Model/DB/Authentication/GetUserDetails');
 const GenerateWebToken = require('../../Utils/GenerateWebToken');
 
 async function UserAuthentication(req, res) {
 
   const { email, password } = req.body;
 
-  const emailValidation = await ValidateEmail(email.toLowerCase());
+  const emailValidation = await GetUserDetails(email.toLowerCase());
 
   if (emailValidation.value) {
 

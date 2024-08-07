@@ -4,9 +4,9 @@ async function ValidateEmail(email) {
   let user;
   try {
     user = await User_Auth_Model.find({ email });
-    return { value: !(user.length === 0), user }
+    return user
   } catch (err) {
-    return { value: false, user: false }
+    return null
   }
 }
 
