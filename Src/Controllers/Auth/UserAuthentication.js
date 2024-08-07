@@ -5,13 +5,10 @@ const GenerateWebToken = require('../../Utils/GenerateWebToken');
 async function UserAuthentication(req, res) {
 
   const { email, password } = req.body;
-
   const emailValidation = await GetUserDetails(email.toLowerCase());
-
-  if (emailValidation.value) {
-
-    const flag = await DecryptPassword(password, emailValidation.user[0].password);
-    const userId = emailValidation.user[0]._id._id.toString();
+  if (emailValidation.exists) {
+    const flag = await DecryptPassword(password, emailValidation.user.password);
+    const userId = emailValidation.user._id._id.toString();
 
     if (flag) {
       const token = await GenerateWebToken(userId);
@@ -22,7 +19,7 @@ async function UserAuthentication(req, res) {
     }
 
   }
-  else if (!emailValidation.value.length) {
+  else if (!emailValidation.exists) {
     res.status(401).json({ message: "Email Invalid", email: false, password: false });
   }
 }
