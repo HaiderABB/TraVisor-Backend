@@ -18,7 +18,7 @@ const RegisterUser = async (req, res) => {
 
     // Check whether the user exists
 
-    if (!emailValidation) {
+    if (emailValidation) {
       return res.status(400).json({ message: 'User Already exists', email: false, user: false });
     }
 

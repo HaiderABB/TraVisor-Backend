@@ -7,14 +7,13 @@ async function ForgotPassword(req, res) {
   const payload = req.body;
 
   const data = await GetUserDetails(payload.email.toLowerCase());
-
-  if (data.user.length === 0) {
+  if (!data.exists) {
     return res.status(400).json({ message: "Invalid Email", mail: false });
   }
   else {
     try {
-      const token = await GenerateWebToken(data.user[0]._id._id.toString())
-      await ResetEmail(payload.email.toLowerCase(), data.user[0].name, token);
+      const token = await GenerateWebToken(data.user._id._id.toString())
+      await ResetEmail(payload.email.toLowerCase(), data.user.name, token);
     } catch (err) {
       console.log(err);
     }
