@@ -8,10 +8,11 @@ async function GetOneWayFlightInfo(req, res) {
       ArrivalCity: req.body.ArrivalCity,
       DepDate: req.body.DepDate
     };
-    const ResJson = await GetFlightsDB(ReqObj, res);
-    res.json(ResJson);
+    const flights = await GetFlightsDB(ReqObj, res);
+    if (flights.length) { res.status(200).json({ message: 'Flights Found', flight: true, error: false, flights }) }
+    else { res.status(401).json({ message: 'Flights not found', flight: false, error: false }) }
   } catch (err) {
-    console.log(err)
+    res.status(404).json({ message: 'Error Fetching Flights', flight: false, error: true })
   }
 }
 

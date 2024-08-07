@@ -5,9 +5,6 @@ async function GetFlightsDB(ReqObj, res) {
   const DepartureDate = new Date(ReqObj.DepDate);
   const StartOfDay = DepartureDate.setHours(0, 0, 0, 0);
   const EndOfDay = DepartureDate.setHours(23, 59, 59, 999);
-  // console.log(DepartureDate);
-  // console.log(ReqObj.ArrivalCity);
-
   try {
     const FlightsInfo = await Flight_Info.find({
       departure_city: ReqObj.DepCity, arrival_city: ReqObj.ArrivalCity, departure_date: {
