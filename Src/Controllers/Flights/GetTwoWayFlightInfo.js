@@ -8,12 +8,10 @@ async function GetTwoWayFlightInfo(req, res) {
   try {
 
     let ReqObj = {
-      DepCity: req.query.DepCity,
-      ArrivalCity: req.query.ArrivalCity,
-      DepDate: req.query.DepDate
+      DepCity: req.body.DepCity,
+      ArrivalCity: req.body.ArrivalCity,
+      DepDate: req.body.DepDate
     }
-
-    // console.log(ReqObj);
 
     const tempJsonDep = await GetFlightsDB(ReqObj, res);
 

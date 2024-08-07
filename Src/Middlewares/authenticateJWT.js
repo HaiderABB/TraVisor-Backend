@@ -4,7 +4,6 @@ const ValidateUser = require('../Helper/Validation/ValidateUser');
 
 const AuthenticateJWT = async (req, res, next) => {
   const token = req.body.jwt_token;
-  console.log(token);
   if (!token) {
     res.status(400).json({ authenticated: false, token: false, expired: false });
   }
@@ -15,7 +14,7 @@ const AuthenticateJWT = async (req, res, next) => {
       if (User) {
         next();
       }
-    } catch (err) { res.status(404).json({ authenticated: false, token: false, expired: true }) }
+    } catch (err) { res.status(404).json({ authenticated: false, token: true, expired: true }) }
   }
 }
 
