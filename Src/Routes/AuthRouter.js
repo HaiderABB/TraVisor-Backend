@@ -3,7 +3,8 @@ const AuthRouter = new Router();
 const UserAuthentication = require('../Controllers/Auth/UserAuthentication')
 const RegisterUser = require('../Controllers/Registration/RegisterUser')
 const ForgotPassword = require('../Controllers/Update/ForgotUserPassword')
-const UpdateUserPassword = require('../Controllers/Update/UpdateUserPassword')
+const UpdateUserPassword = require('../Controllers/Update/UpdateUserPassword');
+const AuthenticateJWT = require('../Middlewares/authenticateJWT');
 
 // Validate/Authenticate User 
 AuthRouter.post('/Authentication', UserAuthentication);
@@ -17,6 +18,8 @@ AuthRouter.post('/Forgot', ForgotPassword);
 // Update User Password
 AuthRouter.put('/Forgot/Update', UpdateUserPassword)
 
+// Testing JWT authentication
+AuthRouter.post('/Auth/Verify', AuthenticateJWT)
 
 
 module.exports = AuthRouter;

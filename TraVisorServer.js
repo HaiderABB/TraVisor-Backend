@@ -1,10 +1,10 @@
 const express = require('express');
-const MongoConnection = require('./Config/DBConnection');
-const AuthRouter = require('./Routes/AuthRouter');
+const MongoConnection = require('./Src/Config/DBConnection');
+const AuthRouter = require('./Src/Routes/AuthRouter');
 const bodyParser = require('body-parser');
-const FlightsRouter = require('./Routes/FlightsRouter')
+const FlightsRouter = require('./Src/Routes/FlightsRouter')
 const dotenv = require('dotenv');
-dotenv.config({ path: '../.env' });
+dotenv.config();
 
 
 // Async server for handling database connections
