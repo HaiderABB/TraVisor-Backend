@@ -8,9 +8,10 @@ const UpdatePassword = async (UserEmail, hashedPass) => {
       user.password = hashedPass;
     }
     await user.save();
+    return true;
   }
   catch (err) {
-    console.log(err);
+    return false;
   }
 }
 
