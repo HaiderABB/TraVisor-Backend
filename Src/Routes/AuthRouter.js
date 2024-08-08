@@ -16,7 +16,7 @@ AuthRouter.post('/Registration', RegisterUser);
 AuthRouter.post('/Forgot', ForgotPassword);
 
 // Update User Password
-AuthRouter.put('/Forgot/Update', UpdateUserPassword)
+AuthRouter.put('/Forgot/Update', AuthenticateJWT, UpdateUserPassword)
 
 
 module.exports = AuthRouter;
