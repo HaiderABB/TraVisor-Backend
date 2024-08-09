@@ -6,8 +6,8 @@ const UpdatePassword = async (UserEmail, hashedPass) => {
     const user = await User_Auth_Model.findOne({ email: UserEmail });
     if (user) {
       user.password = hashedPass;
+      await user.save();
     }
-    await user.save();
     return true;
   }
   catch (err) {
