@@ -4,9 +4,7 @@ const UpdatePassword = require('../../Model/DB/Authentication/UpdatePassword');
 const jwt = require('jsonwebtoken');
 
 const UpdateUserPassword = async (req, res) => {
-  const token = req.body.jwt_token;
-  const decoded = jwt.verify(token, process.env.SECRET_KEY);
-  const User = await ValidateUser(decoded.user_id);
+  const User = req.user;
   const { password } = req.body;
   const hashedPass = await EncryptPassword(password);
   try {

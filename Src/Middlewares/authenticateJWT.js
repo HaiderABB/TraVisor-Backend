@@ -11,6 +11,7 @@ const AuthenticateJWT = async (req, res, next) => {
     try {
       const decoded = jwt.verify(token, process.env.SECRET_KEY);
       const User = await ValidateUser(decoded.user_id);
+      req.user = User;
       if (User) {
         next();
       } else { return res.status(404).json({ authenticated: false, token: true, expired: true }) }
