@@ -12,15 +12,15 @@ async function UserAuthentication(req, res) {
 
     if (flag) {
       const token = await GenerateWebToken(userId);
-      res.status(200).json({ message: 'Login Successful', email: true, password: true, jwt_token: token });
+      res.status(200).json({ message: 'Login Successful', email: true, password: true, jwt_token: token, username: emailValidation.user.username });
     }
     else {
-      res.status(400).json({ message: "Password Invalid", email: true, password: false });
+      res.status(400).json({ message: "Password Invalid", email: true, password: false, jwt_token: false, username: false });
     }
 
   }
   else if (!emailValidation.exists) {
-    res.status(401).json({ message: "Email Invalid", email: false, password: false });
+    res.status(401).json({ message: "Email Invalid", email: false, password: false, jwt_token: false, username: false });
   }
 }
 module.exports = UserAuthentication;
