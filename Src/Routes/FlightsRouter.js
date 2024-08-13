@@ -2,7 +2,7 @@ const express = require('express');
 const FlightsRouter = express.Router();
 const GetOneWayFlightInfo = require('../Controllers/Flights/GetOneWayFlightInfo');
 const GetTwoWayFlightInfo = require('../Controllers/Flights/GetTwoWayFlightInfo');
-const AuthenticateJWT = require('../Middlewares/authenticateJWT');
+const AuthenticateJWT = require('../Middlewares/AuthenticateJWT');
 
 // Endpoint for fetching One-Way flights 
 FlightsRouter.get('/FlightInfo/OneWay', AuthenticateJWT, GetOneWayFlightInfo);

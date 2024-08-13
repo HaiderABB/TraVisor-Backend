@@ -16,6 +16,9 @@ const RegisterUser = async (req, res) => {
     const encryptedPassword = await EncryptPassword(password);
     const emailValidation = await ValidateEmail(email.toLowerCase());
 
+    const str = name;
+    const firstName = str.split(' ')[0];
+
     // Check whether the user exists
 
     if (emailValidation) {
@@ -25,7 +28,7 @@ const RegisterUser = async (req, res) => {
     // Converting the email entered by the user to lower case for storing the data
     const lowerCaseEmail = email.toLowerCase(); email = lowerCaseEmail;
     //Store user data in the DB
-    const DataStored = await StoreUserData({ name, email, password: encryptedPassword });
+    const DataStored = await StoreUserData({ name, email, password: encryptedPassword, username: firstName });
     //Checking if the Data is stored in the Database
     if (DataStored) {
       const EmailSent = await WelcomeEmail(lowerCaseEmail, name);
